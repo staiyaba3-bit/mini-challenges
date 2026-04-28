@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Daily Mini Challenges - Improve consistency, focus, and mental sharpness.">
+    <title>Daily Mini Challenges</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <div class="stars-container" id="starsContainer"></div>
+        <div class="screen home-screen active" id="homeScreen">
+            <header class="top-header">
+                <button class="icon-btn" id="menuBtn" aria-label="Menu">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                        <line x1="3" y1="6" x2="21" y2="6"/>
+                        <line x1="3" y1="12" x2="21" y2="12"/>
+                        <line x1="3" y1="18" x2="21" y2="18"/>
+                    </svg>
+                </button>
+                <button class="icon-btn notification-btn" id="notifBtn" aria-label="Notifications">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                        <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+                    </svg>
+                    <span class="notif-dot"></span>
+                </button>
+            </header>
+            <section class="greeting-section">
+                <h1 class="greeting-title">Hey Akshat! 👋</h1>
+                <p class="greeting-subtitle">Ready to challenge yourself today?</p>
+            </section>
+            <section class="streak-card" id="streakCard">
+                <div class="streak-content">
+                    <div class="streak-info">
+                        <div class="streak-label"><span class="fire-emoji">🔥</span> Streak</div>
+                        <div class="streak-number" id="streakNumberHome">7</div>
+                        <div class="streak-days">Days</div>
+                    </div>
+                    <div class="streak-character">
+                        <img src="assets/fire-character.png" alt="Fire mascot" class="fire-img">
+                    </div>
+                </div>
+            </section>
+            <section class="stats-row">
+                <div class="stat-card">
+                    <div class="stat-icon">⭐</div>
+                    <div class="stat-label">Total Points</div>
+                    <div class="stat-value" id="homeTotalPoints">560</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🔥</div>
+                    <div class="stat-label">Best Streak</div>
+                    <div class="stat-value" id="homeBestStreak">12 Days</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">✅</div>
+                    <div class="stat-label">Completed</div>
+                    <div class="stat-value" id="homeCompleted">24</div>
+                </div>
+            </section>
+            <section class="todays-challenges">
+                <h2 class="section-title">Today's Challenges</h2>
+                <p class="section-subtitle">3 Challenges • ~5-7 min</p>
+                <div class="challenge-cards">
+                    <div class="challenge-card logic-card" id="logicCard">
+                        <div class="challenge-icon-wrap logic-icon-bg"><span>🧠</span></div>
+                        <div class="challenge-name">Logic</div>
+                        <div class="challenge-difficulty easy">Easy</div>
+                    </div>
+                    <div class="challenge-card memory-card" id="memoryCard">
+                        <div class="challenge-icon-wrap memory-icon-bg"><span>👁️</span></div>
+                        <div class="challenge-name">Memory</div>
+                        <div class="challenge-difficulty medium">Medium</div>
+                    </div>
+                    <div class="challenge-card focus-card" id="focusCard">
+                        <div class="challenge-icon-wrap focus-icon-bg"><span>⚡</span></div>
+                        <div class="challenge-name">Focus</div>
+                        <div class="challenge-difficulty easy">Easy</div>
+                    </div>
+                </div>
+            </section>
+            <button class="start-btn" id="startBtn">Start Today's Challenges</button>
+        </div>
+
+        <!-- JOURNEY SCREEN -->
+        <div class="screen journey-screen" id="journeyScreen">
+            <header class="journey-header">
+                <button class="icon-btn back-btn" id="journeyBackBtn" aria-label="Back">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                </button>
+                <div class="journey-title-wrap">
+                    <h1 class="journey-title">Your Journey</h1>
+                    <p class="journey-subtitle">Level up by completing daily challenges</p>
+                </div>
+                <button class="icon-btn lock-btn" aria-label="Lock">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M19 11H5a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2z"></path>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                </button>
+            </header>
+
+            <div class="journey-map-container">
+                <div class="journey-bg-mountains"></div>
+                <svg class="journey-path-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+                    <!-- Glow -->
+                    <path d="M 45 100 C 45 85, 20 85, 20 70 C 20 55, 75 55, 75 40 C 75 25, 35 25, 35 10 C 35 5, 45 5, 45 0" fill="none" stroke="rgba(168, 85, 247, 0.2)" stroke-width="12" stroke-linecap="round" />
+                    <!-- Main Path -->
+                    <path d="M 45 100 C 45 85, 20 85, 20 70 C 20 55, 75 55, 75 40 C 75 25, 35 25, 35 10 C 35 5, 45 5, 45 0" fill="none" stroke="#2d1b69" stroke-width="10" stroke-linecap="round" />
+                    <!-- Dashed Center -->
+                    <path d="M 45 100 C 45 85, 20 85, 20 70 C 20 55, 75 55, 75 40 C 75 25, 35 25, 35 10 C 35 5, 45 5, 45 0" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1" stroke-dasharray="2 3" />
+                </svg>
+
+                <div class="journey-nodes">
+                    <!-- Level 1 -->
+                    <div class="journey-node completed" style="bottom: 7%; left: 40%;">
+                        <div class="node-circle bg-green">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        </div>
+                        <div class="node-label right">
+                            <div class="level-num">Level 1</div>
+                            <div class="level-name text-green">Beginner</div>
+                        </div>
+                    </div>
+
+                    <!-- Level 2 -->
+                    <div class="journey-node completed" style="bottom: 27%; left: 28%;">
+                        <img src="assets/penguin_mascot.png" class="node-mascot" alt="Penguin">
+                        <div class="node-circle bg-green">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        </div>
+                        <div class="node-label right">
+                            <div class="level-num">Level 2</div>
+                            <div class="level-name text-yellow">Starter</div>
+                        </div>
+                    </div>
+
+                    <!-- Level 3 -->
+                    <div class="journey-node current" style="bottom: 49%; left: 54%;">
+                        <div class="node-circle bg-gold">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#f59e0b" stroke="#fff" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                        </div>
+                        <div class="node-label right">
+                            <div class="level-num">Level 3</div>
+                            <div class="level-name text-yellow">Thinker</div>
+                        </div>
+                    </div>
+
+                    <!-- Level 4 -->
+                    <div class="journey-node locked" style="bottom: 70%; left: 65%;">
+                        <div class="node-circle bg-grey">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M19 11H5a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2zM7 11V7a5 5 0 0 1 10 0v4H7z"></path></svg>
+                        </div>
+                        <div class="node-label left">
+                            <div class="level-num">Level 4</div>
+                            <div class="level-name text-grey">Explorer</div>
+                        </div>
+                    </div>
+
+                    <!-- Level 5 -->
+                    <div class="journey-node locked node-end" style="bottom: 90%; left: 40%;">
+                        <img src="assets/treasure_chest.png" class="node-chest" alt="Chest">
+                        <div class="node-label right">
+                            <div class="level-num">Level 5</div>
+                            <div class="level-name text-yellow">Legend</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LOGIC SCREEN -->
+        <div class="screen logic-screen" id="logicScreen">
+            <header class="logic-header">
+                <button class="icon-btn back-btn" id="logicBackBtn" aria-label="Back">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                </button>
+                <h1 class="logic-header-title" id="logicHeaderTitle">Challenge 1 of 3</h1>
+                <div class="flame-badge">
+                    <span class="flame-icon">🔥</span>
+                    <span class="flame-count">12</span>
+                </div>
+            </header>
+
+            <div class="challenge-progress">
+                <div class="progress-fill" id="logicProgressFill" style="width: 33%;"></div>
+            </div>
+
+            <div class="logic-title-section">
+                <h2 class="logic-title" id="logicTitle"><span class="brain-icon">🧠</span> Logic Challenge</h2>
+                <div class="difficulty-badge easy" id="logicDifficulty">Easy</div>
+            </div>
+
+            <div class="question-card">
+                <p class="question-text" id="logicQuestion">What comes next in the sequence?</p>
+                <h3 class="sequence-text" id="logicSequence">3, 6, 12, 24, 48, ?</h3>
+                <img src="assets/brain_mascot.png" class="brain-mascot" id="challengeMascot" alt="Mascot">
+            </div>
+
+            <div class="input-section">
+                <label class="input-label">Enter your answer</label>
+                <div class="input-container">
+                    <input type="text" class="challenge-input" id="challengeInput" placeholder="Type here">
+                </div>
+                <button class="submit-btn logic-submit-btn" id="logicSubmitBtn">Submit Answer</button>
+                <div class="timer-section">
+                    <span class="timer-icon">⏱️</span>
+                    <span class="timer-text" id="logicTimer">00:25</span>
+                </div>
+            </div>
+
+            <!-- Inline result — shown after submit, no page change -->
+            <div id="inlineResult" class="inline-result" style="display:none;"></div>
+
+            <div class="tip-card">
+                <span class="tip-icon">💡</span> Tip: Look for a pattern!
+            </div>
+        </div>
+
+        <!-- MEMORY CHALLENGE SCREEN -->
+        <div class="screen memory-screen" id="memoryScreen">
+            <header class="logic-header">
+                <button class="icon-btn back-btn" id="memoryBackBtn" aria-label="Back">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                </button>
+                <h1 class="logic-header-title">Challenge 2 of 3</h1>
+                <div class="flame-badge">
+                    <span class="flame-icon">🔥</span>
+                    <span class="flame-count">12</span>
+                </div>
+            </header>
+
+            <div class="challenge-progress">
+                <div class="progress-fill" id="memoryProgressFill" style="width: 66%;"></div>
+            </div>
+
+            <div class="logic-title-section">
+                <h2 class="logic-title">👀 Memory Challenge</h2>
+                <div class="difficulty-badge medium">Medium</div>
+            </div>
+
+            <!-- ── MEMORIZE PHASE ── -->
+            <div id="memoryPhase" class="mem-phase">
+                <div class="mem-instruction-card">
+                    <p class="mem-instruction-line1">Memorize the following items.</p>
+                    <p class="mem-instruction-line2">You have <span id="memoryCountdown">8</span> seconds.</p>
+                </div>
+
+                <!-- 4×2 emoji grid -->
+                <div class="mem-grid" id="memoryGrid">
+                    <div class="mem-card" data-pos="1">🚗</div>
+                    <div class="mem-card" data-pos="2">🎸</div>
+                    <div class="mem-card" data-pos="3">🎒</div>
+                    <div class="mem-card" data-pos="4">🌳</div>
+                    <div class="mem-card" data-pos="5">☕</div>
+                    <div class="mem-card" data-pos="6">⚽</div>
+                    <div class="mem-card" data-pos="7">📗</div>
+                    <div class="mem-card" data-pos="8">📷</div>
+                </div>
+
+                <!-- Countdown bar -->
+                <div class="mem-timer-wrap">
+                    <p class="mem-timer-label">Time Left</p>
+                    <div class="mem-timer-num" id="memoryTimerNum">8</div>
+                    <div class="mem-timer-bar-track">
+                        <div class="mem-timer-bar-fill" id="memoryTimerBar"></div>
+                    </div>
+                </div>
+
+                <div class="mem-owl-hint">
+                    <span class="mem-owl-icon">🦉</span>
+                    <span class="mem-owl-text">After time is up, answer the question!</span>
+                </div>
+            </div>
+
+            <!-- ── QUESTION PHASE ── -->
+            <div id="memoryQuestion" class="mem-phase" style="display:none;">
+                <div class="mem-question-card">
+                    <p class="mem-q-label">❓ Question</p>
+                    <p class="mem-q-text">Which item was in position 3?</p>
+                </div>
+
+                <div class="mem-hidden-grid" id="memHiddenGrid">
+                    <div class="mem-hidden-card">❓</div>
+                    <div class="mem-hidden-card">❓</div>
+                    <div class="mem-hidden-card mem-hidden-highlight">3</div>
+                    <div class="mem-hidden-card">❓</div>
+                    <div class="mem-hidden-card">❓</div>
+                    <div class="mem-hidden-card">❓</div>
+                    <div class="mem-hidden-card">❓</div>
+                    <div class="mem-hidden-card">❓</div>
+                </div>
+
+                <div class="input-section mem-input-section">
+                    <label class="input-label">Enter your answer</label>
+                    <div class="input-container">
+                        <input type="text" class="challenge-input" id="memoryInput" placeholder="e.g. 🎒 or Backpack">
+                    </div>
+                    <button class="submit-btn mem-submit-btn" id="memorySubmitBtn">Submit Answer</button>
+                    <div class="timer-section">
+                        <span class="timer-icon">⏱️</span>
+                        <span class="timer-text" id="memoryAnswerTimer">00:20</span>
+                    </div>
+                </div>
+
+                <!-- Inline result -->
+                <div id="memoryInlineResult" class="inline-result" style="display:none;"></div>
+
+                <div class="tip-card">
+                    <span class="tip-icon">💡</span> Tip: Try to visualize positions!
+                </div>
+            </div>
+        </div>
+
+        <!-- FOCUS CHALLENGE SCREEN -->
+        <div class="screen focus-screen" id="focusScreen">
+            <header class="logic-header">
+                <button class="icon-btn back-btn" id="focusBackBtn" aria-label="Back">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                </button>
+                <h1 class="logic-header-title">Challenge 3 of 3</h1>
+                <div class="flame-badge">
+                    <span class="flame-icon">🔥</span>
+                    <span class="flame-count">12</span>
+                </div>
+            </header>
+
+            <div class="challenge-progress">
+                <div class="progress-fill" id="focusProgressFill" style="width: 100%;"></div>
+            </div>
+
+            <div class="logic-title-section">
+                <h2 class="logic-title">⚡ Focus Challenge</h2>
+                <div class="difficulty-badge focus-badge">Easy</div>
+            </div>
+
+            <!-- ── ACTIVE PHASE (timer running) ── -->
+            <div id="focusActivePhase">
+                <div class="foc-instruction-card">
+                    <p class="foc-instruction">Stay focused for 10 seconds<br>without tapping or switching.</p>
+                </div>
+
+                <!-- SVG circular ring + big timer number -->
+                <div class="foc-ring-wrap">
+                    <svg class="foc-ring-svg" viewBox="0 0 200 200">
+                        <!-- background track -->
+                        <circle class="foc-ring-track" cx="100" cy="100" r="82"/>
+                        <!-- animated fill ring -->
+                        <circle class="foc-ring-fill" id="focusRingFill" cx="100" cy="100" r="82"/>
+                    </svg>
+                    <div class="foc-ring-inner">
+                        <div class="foc-timer-num" id="focusTimerNum">10</div>
+                        <div class="foc-timer-label">seconds</div>
+                    </div>
+                </div>
+
+                <p class="foc-subtext" id="focusSubtext">Keep going…</p>
+
+                <!-- tap-to-fail zone (covers the ring) -->
+                <div class="foc-tap-zone" id="focusTapZone"></div>
+            </div>
+
+            <!-- ── COMPLETION STATE ── -->
+            <div id="focusDonePhase" style="display:none;">
+                <div class="foc-done-card">
+                    <div class="foc-done-icon">🎯</div>
+                    <h3 class="foc-done-title">Well done!</h3>
+                    <p class="foc-done-text">You stayed focused 🎉</p>
+                    <div class="foc-done-points">⭐ +60 points earned</div>
+                </div>
+            </div>
+
+            <!-- ── FAIL STATE ── -->
+            <div id="focusFailPhase" style="display:none;">
+                <div class="foc-fail-card">
+                    <div class="foc-fail-icon">💨</div>
+                    <h3 class="foc-fail-title">You tapped!</h3>
+                    <p class="foc-fail-text">Stay completely still next time.</p>
+                    <button class="submit-btn foc-retry-btn" id="focusRetryBtn">Try Again</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- RESULT SCREEN (WELL DONE) -->
+        <div class="screen result-screen" id="resultScreen">
+            <div class="confetti-container" id="confettiContainer"></div>
+            
+            <header class="result-header">
+                <h1 class="well-done-title">Well Done! 🎉</h1>
+            </header>
+
+            <div class="star-character-wrap">
+                <div class="star-glow"></div>
+                <img src="yellow_star_character.png" alt="Star Character" class="star-character" id="resultStarImg">
+                <div class="star-platform"></div>
+            </div>
+
+            <div class="result-card">
+                <h2 class="result-status">Correct Answer!</h2>
+                <p class="answer-display"><span id="resultCorrectAnswer" class="highlight-text">96</span> is the right answer.</p>
+                
+                <div class="explanation-section">
+                    <h3 class="explanation-label">Explanation:</h3>
+                    <p class="explanation-text" id="resultExplanation">The pattern is ×2</p>
+                    <p class="explanation-subtext" id="resultExplanationSub">3 × 2 = 6, 6 × 2 = 12, and so on.</p>
+                </div>
+
+                <div class="points-reward">
+                    <span class="reward-star">⭐</span>
+                    <span class="reward-text">+<span id="resultPoints">20</span> Points</span>
+                </div>
+            </div>
+
+            <button class="next-btn" id="nextChallengeBtn">
+                <span>Next Challenge</span>
+                <div class="next-arrow">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </div>
+            </button>
+        </div>
+
+        <!-- ALL CHALLENGES COMPLETED SCREEN -->
+        <div class="screen completion-screen" id="completionScreen">
+            <!-- Animated confetti layer -->
+            <div class="comp-confetti" id="compConfetti"></div>
+
+            <!-- Radial glow behind trophy -->
+            <div class="comp-glow-bg"></div>
+
+            <!-- Heading -->
+            <div class="comp-heading">
+                <h1 class="comp-title">All Challenges<br>Completed! 🎉</h1>
+            </div>
+
+            <!-- Trophy / celebration visual -->
+            <div class="comp-trophy-wrap">
+                <div class="comp-trophy-ring"></div>
+                <div class="comp-trophy-emoji" id="compTrophy">🏆</div>
+            </div>
+
+            <!-- Summary card -->
+            <div class="comp-card">
+                <!-- Badge -->
+                <div class="comp-badge" id="compBadgeText">⭐ Great Job!</div>
+
+                <!-- Stats row -->
+                <div class="comp-stats">
+                    <div class="comp-stat">
+                        <div class="comp-stat-icon">⭐</div>
+                        <div class="comp-stat-value" id="compPoints">+120 Points</div>
+                        <div class="comp-stat-label">Earned Today</div>
+                    </div>
+                    <div class="comp-stat-divider"></div>
+                    <div class="comp-stat">
+                        <div class="comp-stat-icon">✅</div>
+                        <div class="comp-stat-value">3/3</div>
+                        <div class="comp-stat-label">Completed</div>
+                    </div>
+                    <div class="comp-stat-divider"></div>
+                    <div class="comp-stat">
+                        <div class="comp-stat-icon">🔥</div>
+                        <div class="comp-stat-value" id="compStreak">8 Days</div>
+                        <div class="comp-stat-label">Streak</div>
+                    </div>
+                </div>
+
+                <!-- Motivation text -->
+                <p class="comp-motivation" id="compMotivationText">You're building a strong habit.<br>Keep going daily!</p>
+            </div>
+
+            <!-- Action buttons -->
+            <div class="comp-actions">
+                <button class="comp-primary-btn" id="continueTomorrowBtn">
+                    <span>Continue Tomorrow</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+                <button class="comp-secondary-btn" id="viewProgressBtn">View Progress</button>
+            </div>
+        </div>
+
+        <!-- PROFILE / PROGRESS DASHBOARD SCREEN -->
+        <div class="screen profile-screen" id="profileScreen">
+            <!-- Header -->
+            <header class="prof-header">
+                <h1 class="prof-header-title">Your Progress</h1>
+                <button class="icon-btn prof-settings-btn" aria-label="Settings">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                    </svg>
+                </button>
+            </header>
+
+            <div class="prof-scroll">
+                <!-- ── User Profile Card ── -->
+                <div class="prof-user-card">
+                    <div class="prof-avatar-wrap">
+                        <div class="prof-avatar">A</div>
+                        <div class="prof-avatar-ring"></div>
+                    </div>
+                    <div class="prof-user-info">
+                        <div class="prof-name">Akshat</div>
+                        <div class="prof-tagline">Consistency Builder ✨</div>
+                    </div>
+                    <div class="prof-quick-stats">
+                        <div class="prof-quick-stat">
+                            <span class="prof-qs-icon">🔥</span>
+                            <div>
+                                <div class="prof-qs-val" id="profStreak">7 Days</div>
+                                <div class="prof-qs-label">Streak</div>
+                            </div>
+                        </div>
+                        <div class="prof-qs-divider"></div>
+                        <div class="prof-quick-stat">
+                            <span class="prof-qs-icon">⭐</span>
+                            <div>
+                                <div class="prof-qs-val" id="profTotalPoints">560</div>
+                                <div class="prof-qs-label">Total Points</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── 4-stat grid ── -->
+                <div class="prof-stats-grid">
+                    <div class="prof-stat-box">
+                        <div class="prof-stat-box-val" id="profCompleted">24</div>
+                        <div class="prof-stat-box-label">Completed</div>
+                    </div>
+                    <div class="prof-stat-box">
+                        <div class="prof-stat-box-val" id="profBestStreak">12</div>
+                        <div class="prof-stat-box-label">Best Streak</div>
+                    </div>
+                    <div class="prof-stat-box">
+                        <div class="prof-stat-box-val">87%</div>
+                        <div class="prof-stat-box-label">Accuracy</div>
+                    </div>
+                    <div class="prof-stat-box">
+                        <div class="prof-stat-box-val">8</div>
+                        <div class="prof-stat-box-label">Sessions</div>
+                    </div>
+                </div>
+
+                <!-- ── Challenge Progress Bars ── -->
+                <div class="prof-section">
+                    <h2 class="prof-section-title">Challenge Progress</h2>
+                    <div class="prof-progress-list">
+                        <div class="prof-prog-item">
+                            <div class="prof-prog-header">
+                                <span class="prof-prog-name">🧠 Logic</span>
+                                <span class="prof-prog-pct">90%</span>
+                            </div>
+                            <div class="prof-prog-track">
+                                <div class="prof-prog-fill prof-fill-green" style="width:90%"></div>
+                            </div>
+                        </div>
+                        <div class="prof-prog-item">
+                            <div class="prof-prog-header">
+                                <span class="prof-prog-name">👀 Memory</span>
+                                <span class="prof-prog-pct">72%</span>
+                            </div>
+                            <div class="prof-prog-track">
+                                <div class="prof-prog-fill prof-fill-purple" style="width:72%"></div>
+                            </div>
+                        </div>
+                        <div class="prof-prog-item">
+                            <div class="prof-prog-header">
+                                <span class="prof-prog-name">⚡ Focus</span>
+                                <span class="prof-prog-pct">65%</span>
+                            </div>
+                            <div class="prof-prog-track">
+                                <div class="prof-prog-fill prof-fill-yellow" style="width:65%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── Recent Activity ── -->
+                <div class="prof-section">
+                    <h2 class="prof-section-title">Recent Activity</h2>
+                    <div class="prof-activity-list">
+                        <div class="prof-activity-item">
+                            <div class="prof-act-dot prof-dot-green"></div>
+                            <div class="prof-act-info">
+                                <div class="prof-act-title">Today — Logic Challenge</div>
+                                <div class="prof-act-sub">Completed • +20 pts</div>
+                            </div>
+                            <div class="prof-act-pts">+20</div>
+                        </div>
+                        <div class="prof-activity-item">
+                            <div class="prof-act-dot prof-dot-purple"></div>
+                            <div class="prof-act-info">
+                                <div class="prof-act-title">Today — Memory Challenge</div>
+                                <div class="prof-act-sub">Completed • +40 pts</div>
+                            </div>
+                            <div class="prof-act-pts">+40</div>
+                        </div>
+                        <div class="prof-activity-item">
+                            <div class="prof-act-dot prof-dot-yellow"></div>
+                            <div class="prof-act-info">
+                                <div class="prof-act-title">Today — Focus Challenge</div>
+                                <div class="prof-act-sub">Completed • +60 pts</div>
+                            </div>
+                            <div class="prof-act-pts">+60</div>
+                        </div>
+                        <div class="prof-activity-item">
+                            <div class="prof-act-dot prof-dot-grey"></div>
+                            <div class="prof-act-info">
+                                <div class="prof-act-title">Yesterday — 3 Challenges</div>
+                                <div class="prof-act-sub">All completed • +120 pts</div>
+                            </div>
+                            <div class="prof-act-pts">+120</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── Achievements ── -->
+                <div class="prof-section">
+                    <h2 class="prof-section-title">Achievements</h2>
+                    <div class="prof-badges">
+                        <div class="prof-badge prof-badge-locked" id="badgeStreak3">
+                            <div class="prof-badge-icon">🔥</div>
+                            <div class="prof-badge-text">3-Day<br>Streak</div>
+                        </div>
+                        <div class="prof-badge prof-badge-locked" id="badgeStreak5">
+                            <div class="prof-badge-icon">🎯</div>
+                            <div class="prof-badge-text">5-Day<br>Streak</div>
+                        </div>
+                        <div class="prof-badge prof-badge-locked" id="badgeStreak7">
+                            <div class="prof-badge-icon">🏆</div>
+                            <div class="prof-badge-text">7-Day<br>Streak</div>
+                        </div>
+                        <div class="prof-badge prof-badge-locked" id="badgeStreak10">
+                            <div class="prof-badge-icon">🚀</div>
+                            <div class="prof-badge-text">10-Day<br>Streak</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── Settings actions ── -->
+                <div class="prof-section">
+                    <h2 class="prof-section-title">Settings</h2>
+                    <div class="prof-settings-list">
+                        <button class="prof-setting-item">
+                            <span class="prof-setting-icon">✏️</span>
+                            <span class="prof-setting-label">Edit Profile</span>
+                            <svg class="prof-setting-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                        </button>
+                        <button class="prof-setting-item">
+                            <span class="prof-setting-icon">🔔</span>
+                            <span class="prof-setting-label">Notifications</span>
+                            <svg class="prof-setting-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                        </button>
+                        <button class="prof-setting-item prof-setting-danger">
+                            <span class="prof-setting-icon">🔄</span>
+                            <span class="prof-setting-label">Reset Progress</span>
+                            <svg class="prof-setting-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </div><!-- end .prof-scroll -->
+        </div>
+
+        <nav class="bottom-nav" id="bottomNav">
+            <button class="nav-item active" data-page="home" id="navHome">
+                <svg class="nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                <span class="nav-label">Home</span>
+            </button>
+            <button class="nav-item challenges-tab" data-page="challenges" id="navChallenges">
+                <svg class="nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                <span class="nav-label">Challenges</span>
+            </button>
+            <button class="nav-item" data-page="progress" id="navProgress">
+                <svg class="nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                <span class="nav-label">Progress</span>
+            </button>
+            <button class="nav-item" data-page="profile" id="navProfile">
+                <svg class="nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                <span class="nav-label">Profile</span>
+            </button>
+        </nav>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
